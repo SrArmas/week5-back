@@ -3,13 +3,7 @@ const User = require("../models").user;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const user1 = await User.findOne({
-      where: { email: "test@test.com" },
-    });
-
-    const user2 = await User.findOne({
-      where: { email: "dummy@dummy.com" },
-    });
+    
 
     await queryInterface.bulkInsert(
       "spaces",
@@ -19,7 +13,7 @@ module.exports = {
           description: "A tell all tale",
           createdAt: new Date(),
           updatedAt: new Date(),
-          userId: user1.id,
+          userId: 1,
         },
         {
           title: "I am a dummy",
@@ -27,7 +21,7 @@ module.exports = {
           color: "#EDEDED",
           createdAt: new Date(),
           updatedAt: new Date(),
-          userId: user2.id,
+          userId: 2,
         },
       ],
       {}

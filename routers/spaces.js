@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const router = require("./auth");
 const Space = require("../models").space;
 const Story = require("../models").story;
 
@@ -10,7 +9,7 @@ const router = new Router();
 router.get("/", async (req, res) => {
   const limit = req.query.limit || 10;
   const offset = req.query.offset || 0;
-  const spaces = await Space.findAndountAll({
+  const spaces = await Space.findAndCountAll({
     limit,
     offset,
     backgroundColor: "#ffffff",
@@ -20,3 +19,4 @@ router.get("/", async (req, res) => {
   });
   res.status(200).send({ message: "ok", spaces });
 });
+module.exports = router;
